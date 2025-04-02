@@ -1,13 +1,13 @@
-#imagen de php
+# Usa una imagen base de PHP
 FROM php:8.1-apache
 
-#instalar las dependencias necesarias para trabajar com postgreSQL
+# Instala las dependencias necesarias para PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    && doctor-php-ext-install pdo pdo_pgsql pgsql
+    && docker-php-ext-install pdo pdo_pgsql pgsql
 
-#copiamos todo el contenido de mi proyecto a el contenedor de PHP
+# Copia el contenido de tu aplicación al contenedor
 COPY . /var/www/html/
 
-#exponemos el puerto 80
+# Expone el puerto 80
 EXPOSE 80
